@@ -43,4 +43,9 @@ export const getExchangeRates = async () => {
   return response.data;
 };
 
+export default {
+  getProductBenchmarks,
+  getExchangeRates,
+};
+
 
