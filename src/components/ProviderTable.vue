@@ -5,7 +5,7 @@
         <th>Payment (€)</th>
         <th>Benchmark (€)</th>
         <th>Difference (€)</th>
-        <th @click="changeSort('date')" class="sortable-column">
+        <th @click="changeSort('date')">
           Date
           <span v-if="currentSort === 'date'">
             {{ sortDirection === 'asc' ? '▲' : '▼' }}
@@ -74,3 +74,13 @@ const sortedTransactions = computed(() => {
   return sorted;
 });
 </script>
+
+<style scoped>
+.text-success {
+  color: green;
+}
+
+.text-danger {
+  color: red;
+}
+</style>
