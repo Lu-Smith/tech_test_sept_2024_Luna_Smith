@@ -10,3 +10,25 @@ const apiClient = axios.create({
     'Authorization': `Bearer ${AUTH_KEY}`,
   },
 });
+
+export interface ProductBenchmark {
+  id: number;
+  provider_name: string;
+  product_name: string;
+  start_date: string;
+  end_date: string;
+  currency: {
+    id: number;
+    name: string;
+    symbol: string;
+  };
+  payment: number;
+  benchmark: number;
+}
+
+export const getProductBenchmarks = async () => {
+  const response = await apiClient.get<{ product_benchmarks: ProductBenchmark[] }>('/product_benchmarks');
+  return response.data;
+};
+
+
