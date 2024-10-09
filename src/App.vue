@@ -8,7 +8,6 @@
   import { ref, onMounted } from 'vue';
   import { getProductBenchmarks, getExchangeRates } from './data/api.ts';
   import PaymentBenchmarkAssesment from './components/PaymentBenchmarkAssesment.vue';
-  import YearlyTrendChart from './components/YearlyTrendChart.vue';
 
   interface Currency {
     id: number;
@@ -84,7 +83,3 @@ function processProviderData(benchmarks: Benchmark[], rates: any): Transaction[]
   return transactionList;
 }
 </script>
-
-<style scoped>
-
-</style>
