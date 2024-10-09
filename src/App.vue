@@ -2,7 +2,6 @@
   <h1 class="text-3xl font-bold underline">Technical Test</h1>
   <p>Check whether my data provider payments are over or under benchmark</p>
   <PaymentBenchmarkAssesment :transactions="transactions" />
-  <YearlyTrendChart />
 </template>
 
 <script setup lang="ts">
