@@ -42,8 +42,6 @@ onMounted(async () => {
     const productBenchmarks = await getProductBenchmarks();
     const exchangeRates = await getExchangeRates();
 
-    console.error(productBenchmarks);
-
     transactions.value = processProviderData(productBenchmarks.product_benchmarks, exchangeRates.exchange_rates);
   } catch (error) {
     console.error('Failed to fetch data:', error);
