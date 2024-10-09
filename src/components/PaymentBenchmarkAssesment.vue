@@ -8,30 +8,29 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import ProviderTable from './ProviderTable.vue';
-import YearlyTrendChart from './YearlyTrendChart.vue';
+  import { computed } from 'vue';
+  import ProviderTable from './ProviderTable.vue';
+  import YearlyTrendChart from './YearlyTrendChart.vue';
 
-interface Transaction {
-provider_name: string;
-payment: number;
-benchmark: number;
-date: string;
-}
+  interface Transaction {
+  provider_name: string;
+  payment: number;
+  benchmark: number;
+  date: string;
+  }
 
-const props = defineProps<{ transactions: Transaction[] }>();
+  const props = defineProps<{ transactions: Transaction[] }>();
 
-const groupedTransactions = computed(() => {
-  const groups: Record<string, Transaction[]> = {};
+  const groupedTransactions = computed(() => {
+    const groups: Record<string, Transaction[]> = {};
 
-  props.transactions.forEach(transaction => {
-    if (!groups[transaction.provider_name]) {
-      groups[transaction.provider_name] = [];
-    }
-    groups[transaction.provider_name].push(transaction);
+    props.transactions.forEach(transaction => {
+      if (!groups[transaction.provider_name]) {
+        groups[transaction.provider_name] = [];
+      }
+      groups[transaction.provider_name].push(transaction);
+    });
+
+    return groups;
   });
-
-  return groups;
-});
-
 </script>
