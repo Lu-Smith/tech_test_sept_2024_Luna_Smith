@@ -1,11 +1,13 @@
 <template>
-  <h1 class="text-3xl font-bold underline">Hello world</h1>
-  <p>...</p>
+  <h1 class="text-3xl font-bold underline">Technical Test</h1>
+  <p>Check whether my data provider payments are over or under benchmark</p>
+  <PaymentBenchmarkAssesment />
 </template>
 
 <script setup lang="ts">
   import { ref, onMounted } from 'vue';
   import { getProductBenchmarks, getExchangeRates } from './data/api.ts';
+  import PaymentBenchmarkAssesment from './components/PaymentBenchmarkAssesment.vue';
 
   onMounted(async () => {
   try {
