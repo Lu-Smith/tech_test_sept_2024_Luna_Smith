@@ -3,12 +3,14 @@
   <div v-for="(group, providerName) in groupedTransactions" :key="providerName">
     <h3>Provider: {{ providerName }}</h3>
     <ProviderTable :transactions="group" />
+    <YearlyTrendChart :transactions="group" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
 import ProviderTable from './ProviderTable.vue';
+import YearlyTrendChart from './YearlyTrendChart.vue';
 
 interface Transaction {
 provider_name: string;
