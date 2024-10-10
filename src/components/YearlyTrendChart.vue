@@ -1,7 +1,9 @@
 <template>
-  <div v-if="years.length > 1"> 
-    <h4>Yearly Payment Trend</h4>
-    <canvas ref="chartCanvas"></canvas>
+  <div 
+  v-if="years.length > 1"
+  class="p-4 border border-gray-200 shadow-md rounded-lg bg-white mb-8"> 
+    <h4 class="text-xl font-semibold text-gray-700 mb-4">Yearly Payment Trend <span class="font-normal text-lg">({{ providerName }})</span></h4>
+    <canvas ref="chartCanvas" class="w-full max-h-96"></canvas>
   </div>
 </template>
 
@@ -25,8 +27,12 @@ const payments = ref<number[]>([]);
 const benchmarks = ref<number[]>([]);
 const chartRef = ref<Chart | null>(null); 
 const chartCanvas = ref<HTMLCanvasElement | null>(null);
+const providerName = ref<string>('');
 
 watch(() => props.transactions, () => {
+  if (props.transactions.length > 0) {
+    providerName.value = props.transactions[0].provider_name; 
+  }
   extractYearlyData();
   extractBenchmarkData();
   renderChart();
@@ -82,8 +88,8 @@ function renderChart() {
                 {
                     label: 'Yearly Payment Trend (€)',
                     data: payments.value,
-                    backgroundColor: 'rgba(75, 192, 192, 0.6)', 
-                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(68, 179, 92, 0.6)', 
+                    borderColor: 'rgba(68, 179, 92, 1)',
                     borderWidth: 1,
                     type: 'bar',
                 },
@@ -141,11 +147,3 @@ onMounted(() => {
   renderChart();
 });
 </script>
-
-<style scoped>
-canvas {
-  max-width: 60%;
-  max-height: 400px;
-  margin: 20px 0;
-}
-</style>
