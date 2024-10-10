@@ -22,14 +22,12 @@ const props = defineProps<{ transactions: Transaction[] }>();
 
 const years = ref<number[]>([]);
 const payments = ref<number[]>([]);
-const differences = ref<number[]>([]);
 const benchmarks = ref<number[]>([]);
 const chartRef = ref<Chart | null>(null); 
 const chartCanvas = ref<HTMLCanvasElement | null>(null);
 
 watch(() => props.transactions, () => {
   extractYearlyData();
-  extractDifferenceData()
   extractBenchmarkData();
   renderChart();
 }, { immediate: true });
@@ -50,23 +48,6 @@ function extractYearlyData() {
   payments.value = years.value.map(year => yearlyData[year]);
 }
 
-// Extract yearly difference data
-function extractDifferenceData() {
-  const differenceData: Record<number, number> = {};
-
-  props.transactions.forEach(transaction => {
-    const year = new Date(transaction.date).getFullYear();
-    if (!differenceData[year]) {
-      differenceData[year] = 0;
-    }
-    // Calculate the difference as payment - benchmark
-    differenceData[year] += (transaction.payment - transaction.benchmark);
-  });
-
-  // Map the calculated differences to the years array
-  differences.value = years.value.map(year => differenceData[year] || 0); // Ensure to return 0 if undefined
-}
-
 // Extract yearly benchmark data
 function extractBenchmarkData() {
     const benchmarkData: Record<number, number> = {};
@@ -76,7 +57,7 @@ function extractBenchmarkData() {
         if (!benchmarkData[year]) {
             benchmarkData[year] = 0;
         }
-        benchmarkData[year] += transaction.benchmark; // Total benchmarks per year
+        benchmarkData[year] += transaction.benchmark; 
     });
 
     // Update the years array based on benchmarks to ensure synchronization
@@ -94,40 +75,28 @@ function renderChart() {
   const ctx = chartCanvas.value?.getContext('2d');
   if (ctx) {
     chartRef.value = new Chart(ctx, {
-        type: 'bar', // Main chart type for payments
+        type: 'bar', 
         data: {
             labels: years.value,
             datasets: [
                 {
                     label: 'Yearly Payment Trend (€)',
                     data: payments.value,
-                    backgroundColor: 'rgba(75, 192, 192, 0.6)', // Bar color
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)', 
                     borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1,
-                    tension: 0.1,
-                    type: 'bar', // Explicitly set this dataset as bar type
-                },
-                {
-                    label: 'Total Difference (€)',
-                    data: differences.value,
-                    borderColor: 'rgba(255, 99, 132, 1)', // Different color for differences
-                    backgroundColor: 'rgba(255, 99, 132, 0)', // No fill for the line
-                    borderWidth: 2,
-                    fill: false, // Do not fill under the line
-                    tension: 0.1, // Smoothness of the line
-                    type: 'line', // Explicitly set this dataset as line type
-                    pointRadius: 5, // Optional: Make points more visible
+                    type: 'bar',
                 },
                 {
                     label: 'Yearly Benchmark Trend (€)',
-                    data: benchmarks.value, // Assuming benchmarks.value is defined and contains benchmark data
-                    borderColor: 'rgba(54, 162, 235, 1)', // Line color for benchmarks
-                    backgroundColor: 'rgba(54, 162, 235, 0)', // No fill for the line
+                    data: benchmarks.value, 
+                    borderColor: 'rgba(54, 162, 235, 1)', 
+                    backgroundColor: 'rgba(54, 162, 235, 0)', 
                     borderWidth: 2,
-                    fill: false, // No fill under the line
-                    tension: 0.1, // Smoothness of the line
-                    type: 'line', // Explicitly set this dataset as line type
-                    pointRadius: 5, // Optional: Make points more visible
+                    fill: false, 
+                    tension: 0.1, 
+                    type: 'line', 
+                    pointRadius: 5, 
                 }
             ],
         },
@@ -168,7 +137,6 @@ onBeforeUnmount(() => {
 
 onMounted(() => {
   extractYearlyData();
-  extractDifferenceData()
   extractBenchmarkData();
   renderChart();
 });
