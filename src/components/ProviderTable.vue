@@ -41,13 +41,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-
-interface Transaction {
-  provider_name: string;
-  payment: number;
-  benchmark: number;
-  date: string;
-}
+import { Transaction} from '../data/interfaces.ts'; 
 
 const props = defineProps<{ transactions: Transaction[] }>();
 
