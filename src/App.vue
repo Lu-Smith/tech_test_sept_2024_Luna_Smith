@@ -4,12 +4,14 @@
   <div class="p-4">
     <PaymentBenchmarkAssesment :transactions="transactions" />
   </div>
+  <Footer />
 </template>
 
 <script setup lang="ts">
   import { ref, onMounted } from 'vue';
   import { getProductBenchmarks, getExchangeRates } from './data/api.ts';
   import PaymentBenchmarkAssesment from './components/PaymentBenchmarkAssesment.vue';
+  import Footer from './components/Footer.vue';
 
   interface Currency {
     id: number;
