@@ -1,7 +1,9 @@
 <template>
-  <h1 class="text-3xl font-bold underline mb-4">Technical Test</h1>
-  <p>Check whether the provider payments are over or under benchmark.</p>
-  <PaymentBenchmarkAssesment :transactions="transactions" />
+  <h1 class="text-3xl font-bold mb-6 bg-gray-100 p-4">Technical Test <span class="text-xl text-green-900">- Luna Smith</span></h1>
+  <p class="sm:text-base text-sm ">Check whether the provider payments are over or under benchmark.</p>
+  <div class="p-4">
+    <PaymentBenchmarkAssesment :transactions="transactions" />
+  </div>
 </template>
 
 <script setup lang="ts">
