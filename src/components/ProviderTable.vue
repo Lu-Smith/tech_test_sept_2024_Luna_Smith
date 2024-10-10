@@ -1,11 +1,13 @@
 <template>
-  <table class="table table-striped">
-    <thead>
+  <table class="min-w-full bg-white border border-green-100 shadow-md rounded-lg overflow-hidden mb-6">
+    <thead class="bg-green-100 text-gray-600 uppercase text-sm leading-normal">
       <tr>
-        <th>Payment (€)</th>
-        <th>Benchmark (€)</th>
-        <th>Difference (€)</th>
-        <th @click="changeSort('date')">
+        <th class="py-3 px-6">Payment (€)</th>
+        <th class="py-3 px-6">Benchmark (€)</th>
+        <th class="py-3 px-6">Difference (€)</th>
+        <th 
+        class="py-3 px-6 cursor-pointer" 
+        @click="changeSort('date')">
           Date
           <span v-if="currentSort === 'date'">
             {{ sortDirection === 'asc' ? '▲' : '▼' }}
@@ -13,18 +15,20 @@
         </th>
       </tr>
     </thead>
-    <tbody>
-      <tr v-for="(transaction, index) in sortedTransactions" :key="transaction.date + transaction.provider_name + index">
-        <td>{{ transaction.payment.toFixed(2) }}</td>
-        <td>{{ transaction.benchmark.toFixed(2) }}</td>
-        <td :class="{ 'text-success': transaction.payment > transaction.benchmark, 'text-danger': transaction.payment < transaction.benchmark }">
+    <tbody class="text-gray-700 text-sm">
+      <tr 
+      v-for="(transaction, index) in sortedTransactions" :key="transaction.date + transaction.provider_name + index"
+      class="border-b border-gray-200 hover:bg-gray-100">
+        <td class="py-3 px-6">{{ transaction.payment.toFixed(2) }}</td>
+        <td class="py-3 px-6">{{ transaction.benchmark.toFixed(2) }}</td>
+        <td class="py-3 px-6" :class="{ 'text-success': transaction.payment > transaction.benchmark, 'text-danger': transaction.payment < transaction.benchmark }">
           {{ (transaction.payment - transaction.benchmark).toFixed(2) }}
         </td>
-        <td>{{ transaction.date }}</td>
+        <td class="py-3 px-6">{{ transaction.date }}</td>
       </tr>
-      <tr>
-        <td colspan="2"><strong>Total Difference</strong></td>
-        <td :class="{ 'text-success': totalDifference > 0, 'text-danger': totalDifference < 0 }">
+      <tr class="bg-gray-100 border-t border-gray-100 font-semibold">
+        <td colspan="2" class="py-3 px-6 text-right"><strong>Total Difference</strong></td>
+        <td class="py-3 px-6" :class="{ 'text-success': totalDifference > 0, 'text-danger': totalDifference < 0 }">
           €{{ totalDifference.toFixed(2) }}
         </td>
         <td></td>
