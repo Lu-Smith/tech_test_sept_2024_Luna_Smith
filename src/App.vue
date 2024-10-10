@@ -12,36 +12,7 @@
   import { getProductBenchmarks, getExchangeRates } from './data/api.ts';
   import PaymentBenchmarkAssesment from './components/PaymentBenchmarkAssesment.vue';
   import Footer from './components/Footer.vue';
-
-  interface Currency {
-    id: number;
-    name: string;
-    symbol: string;
-  }
-
-  interface Benchmark {
-    benchmark: number;
-    currency: Currency;
-    payment: number;
-    provider_name: string;
-    product_name: string;
-    start_date: string;
-    end_date: string;
-  }
-
-  interface Transaction {
-  provider_name: string;
-  payment: number;
-  benchmark: number;
-  currency: Currency;
-  date: string;
-}
-
-interface ExchangeRate {
-  from_currency_id: number;
-  to_currency_id: number;
-  exchange_rate: number;
-}
+  import { Transaction, Benchmark, ExchangeRate} from './data/interfaces.ts';  
 
 const transactions = ref<Transaction[]>([]);
 
