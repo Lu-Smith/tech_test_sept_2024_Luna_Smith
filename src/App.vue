@@ -1,6 +1,6 @@
 <template>
-  <h1 class="text-3xl font-bold underline">Technical Test</h1>
-  <p>Check whether my data provider payments are over or under benchmark</p>
+  <h1 class="text-3xl font-bold underline mb-4">Technical Test</h1>
+  <p>Check whether the provider payments are over or under benchmark.</p>
   <PaymentBenchmarkAssesment :transactions="transactions" />
 </template>
 
