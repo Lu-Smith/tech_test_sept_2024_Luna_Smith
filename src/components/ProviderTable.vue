@@ -1,7 +1,7 @@
 <template>
   <div class="sm:max-w-xl max-w-fit mx-auto overflow-x-auto">
-    <table class="min-w-full bg-white border-2 border-solid border-green-100 shadow-md mb-6">
-      <thead class="bg-green-100 uppercase sm:text-sm text-[10px]">
+    <table class="min-w-full bg-white border-2 border-solid border-customGreen shadow-md mb-6">
+      <thead class="bg-customGreen uppercase sm:text-sm text-[10px]">
         <tr>
           <th class="sm:py-3 sm:px-6 py-1 px-1">Payment (€)</th>
           <th class="sm:py-3 sm:px-6 py-1 px-1">Benchmark (€)</th>
