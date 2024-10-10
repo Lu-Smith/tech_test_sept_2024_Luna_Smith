@@ -1,7 +1,7 @@
 <template>
-  <h2>Payment vs. Benchmark Assessment</h2>
+  <h2 class="font-bold my-6">Payment vs. Benchmark Assessment</h2>
   <div v-for="(group, providerName) in groupedTransactions" :key="providerName">
-    <h3>Provider: {{ providerName }}</h3>
+    <h3 class="p-2">Provider: <span class="font-bold">{{ providerName }}</span></h3>
     <ProviderTable :transactions="group" />
     <YearlyTrendChart :transactions="group" />
   </div>
@@ -13,10 +13,10 @@
   import YearlyTrendChart from './YearlyTrendChart.vue';
 
   interface Transaction {
-  provider_name: string;
-  payment: number;
-  benchmark: number;
-  date: string;
+    provider_name: string;
+    payment: number;
+    benchmark: number;
+    date: string;
   }
 
   const props = defineProps<{ transactions: Transaction[] }>();
