@@ -1,9 +1,9 @@
 <template>
   <div 
   v-if="years.length > 1"
-  class="p-4 border border-gray-200 shadow-md rounded-lg bg-white mb-8"> 
-    <h4 class="text-xl font-semibold text-gray-700 mb-4">Yearly Payment Trend <span class="font-normal text-lg">({{ providerName }})</span></h4>
-    <canvas ref="chartCanvas" class="w-full max-h-96"></canvas>
+  class="p-4 border border-gray-200 shadow-md rounded-lg bg-white mb-8 sm:max-w-xl max-w-fit mx-auto"> 
+    <h4 class="sm:text-xl text-base font-semibold text-gray-700 mb-4">Yearly Payment Trend <span class="font-normal sm:text-lg text-sm">({{ providerName }})</span></h4>
+    <canvas ref="chartCanvas" class="w-full"></canvas>
   </div>
 </template>
 
