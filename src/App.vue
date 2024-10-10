@@ -33,6 +33,12 @@
   date: string;
 }
 
+interface ExchangeRate {
+  from_currency_id: number;
+  to_currency_id: number;
+  exchange_rate: number;
+}
+
 const transactions = ref<Transaction[]>([]);
 
 onMounted(async () => {
@@ -46,7 +52,7 @@ onMounted(async () => {
   }
 });
 
-function processProviderData(benchmarks: Benchmark[], rates: any): Transaction[] {
+function processProviderData(benchmarks: Benchmark[], rates: ExchangeRate[]): Transaction[] {
   const transactionList: Transaction[] = [];
 
   for (const benchmark of benchmarks) {
