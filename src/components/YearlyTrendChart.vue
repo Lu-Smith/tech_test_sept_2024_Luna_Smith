@@ -2,7 +2,7 @@
   <div 
   v-if="years.length > 1"
   class="p-4 border border-gray-200 shadow-md rounded-lg bg-white mb-8 sm:max-w-xl max-w-fit mx-auto"> 
-    <h4 class="sm:text-xl text-base font-semibold text-gray-700 mb-4">Yearly Payment Trend <span class="font-normal sm:text-lg text-sm">({{ providerName }})</span></h4>
+    <h4 class="sm:text-xl text-sm font-semibold text-gray-700 mb-4">Yearly Payment Trend <span class="font-normal sm:text-lg text-[10px]">({{ providerName }})</span></h4>
     <canvas ref="chartCanvas" class="w-full"></canvas>
   </div>
 </template>
@@ -112,6 +112,11 @@ function renderChart() {
                 legend: {
                     display: true,
                     position: 'top',
+                    labels: {
+                      font: {
+                        size: window.innerWidth < 640 ? 10 : 12, 
+                      },
+                    },
                 },
             },
             scales: {
@@ -119,12 +124,18 @@ function renderChart() {
                     title: {
                         display: true,
                         text: 'Year',
+                        font: {
+                          size: window.innerWidth < 640 ? 10 : 14, 
+                        },
                     },
                 },
                 y: {
                     title: {
                         display: true,
                         text: 'Amount (€)',
+                        font: {
+                          size: window.innerWidth < 640 ? 10 : 14, 
+                        },
                     },
                     beginAtZero: true,
                 },
