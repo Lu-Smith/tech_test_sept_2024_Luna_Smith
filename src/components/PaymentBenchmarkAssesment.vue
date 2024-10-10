@@ -11,13 +11,7 @@
   import { computed } from 'vue';
   import ProviderTable from './ProviderTable.vue';
   import YearlyTrendChart from './YearlyTrendChart.vue';
-
-  interface Transaction {
-    provider_name: string;
-    payment: number;
-    benchmark: number;
-    date: string;
-  }
+  import { Transaction} from '../data/interfaces.ts'; 
 
   const props = defineProps<{ transactions: Transaction[] }>();
 
