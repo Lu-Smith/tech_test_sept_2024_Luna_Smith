@@ -21,6 +21,10 @@ This project evaluates whether the provider payments are over or under benchmark
 - Chart.js for data visualization
 
 ## Installation Instructions
+You can easily access the application through this link: https://techincal-test-2024-luna-smith-sr.netlify.app
+
+or
+
 ```bash
 git clone https://github.com/Lu-Smith/tech_test_sept_2024_Luna_Smith.git
 
